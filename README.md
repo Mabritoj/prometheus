@@ -1,1 +1,1 @@
-prometheus
+carlosedp/kube-state-metrics
