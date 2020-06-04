@@ -9,6 +9,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
 metadata:
   name: prometheus
+  namespace: monitoring
 rules:
 - apiGroups: [""]
   resources:
@@ -28,11 +29,11 @@ rules:
 
 ---
 
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: prometheus
-    namespace: monitoring
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: monitoring
 
 ---
 
@@ -40,13 +41,14 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
   name: prometheus
+  namespace: monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: prometheus
 subjects:
 - kind: ServiceAccount
-  name: default
+  name: prometheus
   namespace: monitoring
 
 ---
@@ -294,7 +296,7 @@ spec:
       serviceAccountName: prometheus
       containers:
         - name: kube-state-metrics
-          image: registry.rasnetics.com:30000/kube-state-metrics:latest
+          image: registry.rasnetics.com:30000/kube-state-metrics:v1.9.6
           ports:
             - containerPort: 8080
   
