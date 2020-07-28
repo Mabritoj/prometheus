@@ -1,7 +1,7 @@
 def divisionsContainerAPI
 
 pipeline {
-
+    agent any
     stages {
         stage('Deploy to Kubernetes') {
             /* This builds the actual image; synonymous to
