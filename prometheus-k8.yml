@@ -163,7 +163,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain 
   nfs: 
     path: /mnt/kubeshare/prometheus-store
-    server: 192.168.86.120 
+    server: 192.168.86.123
 
 ---
 
