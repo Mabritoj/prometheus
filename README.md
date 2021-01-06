@@ -5,4 +5,4 @@ Within this repo, you will find a Kubernetes file to spin up Kube-State-Metrics 
   - docker pull prom/prometheus
 3. Tag and push both images to local Docker repository
 4. Change the group owner on the volume mount to "nobody"
-  - sudo chgrp -R nogroup /mnt/kubeshare/prometheus-store/
+  - sudo chown -R nobody:nogroup /mnt/kubeshare/prometheus-store/
