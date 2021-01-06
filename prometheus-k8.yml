@@ -403,7 +403,7 @@ spec:
       serviceAccountName: prometheus
       containers:
         - name: kube-state-metrics
-          image: registry.rasnetics.com:30000/kube-state-metrics:v1.9.6
+          image: registry.rasnetics.com:30000/kube-state-metrics:v1.9.7
           ports:
             - containerPort: 8080
   
