@@ -403,7 +403,7 @@ spec:
       serviceAccountName: prometheus
       containers:
         - name: kube-state-metrics
-          image: registry.rasnetics.com:30000/kube-state-metrics:v1.9.7
+          image: registry.rasnetics.com:30000/kube-state-metrics:v2.2.0
           ports:
             - containerPort: 8080
   
@@ -440,7 +440,7 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: prometheus-ingress
@@ -452,6 +452,10 @@ spec:
   - host: monitoring.rasnetics.com
     http:
       paths:
-      - backend:
-          serviceName: prometheus-service
-          servicePort: 9090
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: prometheus-service
+            port: 
+              number: 9090
